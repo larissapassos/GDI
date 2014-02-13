@@ -1,9 +1,8 @@
 package objetos;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Atendente extends Pessoa implements Serializable {
+public class Atendente extends Pessoa {
 	/**
 	 * 
 	 */
