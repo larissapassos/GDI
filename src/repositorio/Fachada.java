@@ -3,6 +3,7 @@ package repositorio;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
@@ -33,5 +34,70 @@ public class Fachada {
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
+	}
+	
+	public ArrayList<Object> consulta(String codigo, String nome, String logradouro, String numero,String complemento, String bairro, String cidade, String estado, String cep){
+		String consulta = "SELECT * FROM tb_posto p";
+		if (!codigo.isEmpty()||!nome.isEmpty()||!logradouro.isEmpty()||!numero.isEmpty()||!complemento.isEmpty()||!bairro.isEmpty()||!cidade.isEmpty()||!estado.isEmpty()||cep.isEmpty()){
+			consulta += " WHERE ";
+		}
+		boolean and = false;
+		if(!codigo.isEmpty()){
+			if(!and){
+				consulta = consulta + "p.codigo = \""+codigo + "\" ";
+				and = true;
+			}		
+		}
+		if(!nome.isEmpty()){
+			if(!and){
+				consulta = consulta + "p.nome = \""+nome+ "\" ";
+				and = true;
+			}else consulta = consulta + "AND p.nome = \""+nome+ "\" ";
+		}
+		if(!logradouro.isEmpty()){
+			if(!and){
+				consulta = consulta + "p.endereco.logradouro = \""+logradouro+ "\" ";
+				and = true;
+			}else consulta = consulta + "AND p.endereco.logradouro = \""+logradouro+ "\" ";
+		}
+		if(!numero.isEmpty()){
+			if(!and){
+				consulta = consulta + "p.endereco.numero = \""+numero+ "\" ";
+				and = true;
+			}else consulta = consulta + "AND p.endereco.numero = \""+numero+ "\" ";
+		}
+		if(!complemento.isEmpty()){
+			if(!and){
+				consulta = consulta + "p.endereco.complemento = \""+complemento + "\" ";
+				and = true;
+			}else consulta = consulta + "AND p.endereco.complemento = \""+complemento + "\" ";
+		}
+		if(!bairro.isEmpty()){
+			if(!and){
+				consulta = consulta + "p.endereco.bairro = \""+bairro+ "\" ";
+				and = true;
+			}else consulta = consulta + "AND p.endereco.bairro = \""+bairro+ "\" ";
+		}
+		if(!cidade.isEmpty()){
+			if(!and){
+				consulta = consulta + "p.endereco.cidade = \""+cidade + "\" ";
+				and = true;
+			}else consulta = consulta + "AND p.endereco.cidade = \""+cidade + "\" ";
+		}
+		if(!estado.isEmpty()){
+			if(!and){
+				consulta = consulta + "p.endereco.estado = \""+estado + "\" ";
+				and = true;
+			}else consulta = consulta + "AND p.endereco.estado = \""+estado + "\" ";
+		}
+		if(!cep.isEmpty()){
+			if(!and){
+				consulta = consulta + "p.endereco.numero = "+numero + " ";
+				and = true;
+			}else consulta = consulta + "AND p.endereco.numero = \""+numero + "\" ";
+		}
+		consulta+=";";
+		System.out.println(consulta);
+		return new ArrayList<Object>();
 	}
 }

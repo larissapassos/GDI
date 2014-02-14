@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 import oracle.jdbc.OracleResultSet;
 import oracle.sql.ARRAY;
-import objetos.Atendente;
 
 public class RepositorioAtendente extends Repositorio{
 
