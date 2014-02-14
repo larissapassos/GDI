@@ -14,5 +14,5 @@ public abstract class Repositorio {
 	public abstract void inserir(Object objeto);
 	public abstract ArrayList<Object> consultar(String consulta) throws SQLException;
 	public abstract boolean remover(Object objeto);
-	public abstract void atualizar(String update);
+	public abstract void atualizar(Object objeto, String atributo, String novoValor);
 }

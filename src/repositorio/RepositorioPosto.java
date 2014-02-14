@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import objetos.Posto;
+
 public class RepositorioPosto extends Repositorio {
 
 	public RepositorioPosto(Connection con) {
@@ -30,7 +32,7 @@ public class RepositorioPosto extends Repositorio {
 	}
 
 	@Override
-	public void atualizar(String update) {
+	public void atualizar(Object objeto, String atributo, String novoValor) {
 		// TODO Auto-generated method stub
 		
 	}

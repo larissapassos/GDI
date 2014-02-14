@@ -53,7 +53,7 @@ public class RepositorioAtendente extends Repositorio{
 	}
 
 	@Override
-	public void atualizar(String update) {
+	public void atualizar(Object objeto, String atributo, String novoValor) {
 		// TODO Auto-generated method stub
 		
 	}

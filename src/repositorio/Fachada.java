@@ -106,11 +106,15 @@ public class Fachada {
 		return rep.consultar(consulta);
 	}
 	
-	public void inserir(String codigo, String nome, String logradouro, 
-			String numero, String complemento, String bairro, String cidade, 
-			String estado, String cep, String imagePath){
-		Endereco endereco = new Endereco(logradouro, numero, complemento, bairro, cidade, estado, cep);
-		Posto posto = new Posto(codigo, nome, endereco, imagePath);
+	public void inserir(Posto posto){
 		rep.inserir(posto);
+	}
+	
+	public boolean remover(Posto posto) {	
+		return rep.remover(posto);
+	}
+	
+	public void atualizar(Posto posto, String atributo, String novoValor) {
+		rep.atualizar(posto, atributo, novoValor);
 	}
 }
