@@ -7,10 +7,10 @@ public class Ocorrencia implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -3120983315936196267L;
-	String codigo;
-	String tipo;
-	String solicitante;
-	Localizacao localizacao;
+	public String codigo;
+	public String tipo;
+	public String solicitante;
+	public Localizacao localizacao;
 	
 	public Ocorrencia(String codigo, String tipo, String solicitante,
 			Localizacao localizacao) {

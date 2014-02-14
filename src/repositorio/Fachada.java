@@ -7,6 +7,9 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import objetos.Endereco;
+import objetos.Posto;
+
 public class Fachada {
 	private String user;
 	private String password;
@@ -101,5 +104,13 @@ public class Fachada {
 		}
 		System.out.println(consulta);
 		return rep.consultar(consulta);
+	}
+	
+	public void inserir(String codigo, String nome, String logradouro, 
+			String numero, String complemento, String bairro, String cidade, 
+			String estado, String cep, String imagePath){
+		Endereco endereco = new Endereco(logradouro, numero, complemento, bairro, cidade, estado, cep);
+		Posto posto = new Posto(codigo, nome, endereco, imagePath);
+		rep.inserir(posto);
 	}
 }

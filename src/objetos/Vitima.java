@@ -8,12 +8,12 @@ public class Vitima extends Pessoa{
 	 * 
 	 */
 	private static final long serialVersionUID = 8827971432690484732L; 
-	String codigo;
-	char obito;
-	String diagnostico;
-	String hospital;
-	Ocorrencia ocorrencia;
-	ArrayList<Bombeiro_Ocorrencia> bombeiro_ocorrencia;
+	public String codigo;
+	public char obito;
+	public String diagnostico;
+	public String hospital;
+	public Ocorrencia ocorrencia;
+	public ArrayList<Bombeiro_Ocorrencia> bombeiro_ocorrencia;
 	
 	public Vitima(String nome, String dataNascimento, String sexo, String cpf,
 			ArrayList<String> telefones, String codigo, char obito,

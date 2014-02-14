@@ -5,8 +5,8 @@ package testes;
 import repositorio.Fachada;
 
 public class TesteRepo {
-	public static String nome_bd = "ORCL";
-	public static String senha_sqlplus = "farofa";
+	public static String nome_bd = "XE";
+	public static String senha_sqlplus = "123";
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		boolean conectou = false;

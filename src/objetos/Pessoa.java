@@ -8,11 +8,11 @@ public abstract class Pessoa implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -4015603264685231840L;
-	String nome;
-	String dataNascimento;
-	String sexo;
-	String cpf;
-	ArrayList<String> telefones;
+	public String nome;
+	public String dataNascimento;
+	public String sexo;
+	public String cpf;
+	public ArrayList<String> telefones;
 	
 	public Pessoa(String nome, String dataNascimento, String sexo, String cpf,
 			ArrayList<String> telefones) {

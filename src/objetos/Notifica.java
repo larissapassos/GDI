@@ -7,10 +7,10 @@ public class Notifica implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 7986849197764582951L;
-	Posto posto;
-	Ocorrencia ocorrencia;
-	Atendente atendente;
-	String data;
+	public Posto posto;
+	public Ocorrencia ocorrencia;
+	public Atendente atendente;
+	public String data;
 	
 	public Notifica(Posto posto, Ocorrencia ocorrencia, Atendente atendente,
 			String data) {

@@ -8,11 +8,11 @@ public class Posto implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 4745879615156952573L;
-	String codigo;
-	String nome;
-	Endereco endereco;
-	Image emblema;
-	String imagePath;
+	public String codigo;
+	public String nome;
+	public Endereco endereco;
+	public Image emblema;
+	public String imagePath;
 	
 	public Posto(String codigo, String nome, Endereco endereco, Image emblema) {
 		this.codigo = codigo;
