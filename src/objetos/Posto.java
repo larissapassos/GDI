@@ -12,6 +12,7 @@ public class Posto implements Serializable{
 	String nome;
 	Endereco endereco;
 	Image emblema;
+	String imagePath;
 	
 	public Posto(String codigo, String nome, Endereco endereco, Image emblema) {
 		this.codigo = codigo;
@@ -20,5 +21,10 @@ public class Posto implements Serializable{
 		this.emblema = emblema;
 	}
 	
-	
+	public Posto(String codigo, String nome, Endereco endereco, String imagePath){
+		this.codigo = codigo;
+		this.nome = nome;
+		this.endereco = endereco;
+		this.imagePath = imagePath;
+	}
 }
