@@ -12,6 +12,7 @@ public class Fachada {
 	private String password;
 	private String url_driver;
 	public Connection con;
+	public RepositorioPosto rep;
 	
 	public Fachada(String user, String password, String url_driver){
 		this.user = user;
@@ -23,6 +24,8 @@ public class Fachada {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			con = DriverManager.getConnection(url_driver, user, password);
+			System.out.println("Conectado a database com sucesso!");
+			this.rep = new RepositorioPosto(con);
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
@@ -36,7 +39,7 @@ public class Fachada {
 		}
 	}
 	
-	public ArrayList<Object> consulta(String codigo, String nome, String logradouro, String numero,String complemento, String bairro, String cidade, String estado, String cep){
+	public ArrayList<Object> consulta(String codigo, String nome, String logradouro, String numero,String complemento, String bairro, String cidade, String estado, String cep) throws SQLException{
 		String consulta = "SELECT * FROM tb_posto p";
 		if (!codigo.isEmpty()||!nome.isEmpty()||!logradouro.isEmpty()||!numero.isEmpty()||!complemento.isEmpty()||!bairro.isEmpty()||!cidade.isEmpty()||!estado.isEmpty()||cep.isEmpty()){
 			consulta += " WHERE ";
@@ -96,8 +99,7 @@ public class Fachada {
 				and = true;
 			}else consulta = consulta + "AND p.endereco.numero = \""+numero + "\" ";
 		}
-		consulta+=";";
 		System.out.println(consulta);
-		return new ArrayList<Object>();
+		return rep.consultar(consulta);
 	}
 }

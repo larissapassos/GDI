@@ -46,4 +46,16 @@ public class RepositorioAtendente extends Repositorio{
 		return atendentes;
 	}
 
+	@Override
+	public boolean remover(Object objeto) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void atualizar(String update) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -1,5 +1,7 @@
 package testes;
 
+import java.sql.SQLException;
+
 import repositorio.Fachada;
 
 public class TesteConsulta {
@@ -16,6 +18,17 @@ public class TesteConsulta {
 	public static String nome = "eu";
 	public static void main(String[] args) {
 		Fachada fachada = new Fachada("system", senha_sqlplus, "jdbc:oracle:thin:@localhost:1521:" + nome_bd);
-		fachada.consulta(codigo,  nome,  logradouro,  numero, complemento,  bairro,  cidade,  estado,  cep);
+		try {
+			fachada.consulta(codigo,  nome,  logradouro,  numero, complemento,  bairro,  cidade,  estado,  cep);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			try {
+				fachada.con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
 	}
 }
