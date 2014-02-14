@@ -1,4 +1,5 @@
 package objetos;
+import java.awt.Image;
 import java.io.Serializable;
 
 
@@ -10,11 +11,13 @@ public class Posto implements Serializable{
 	String codigo;
 	String nome;
 	Endereco endereco;
+	Image emblema;
 	
-	public Posto(String codigo, String nome, Endereco endereco) {
+	public Posto(String codigo, String nome, Endereco endereco, Image emblema) {
 		this.codigo = codigo;
 		this.nome = nome;
 		this.endereco = endereco;
+		this.emblema = emblema;
 	}
 	
 	
