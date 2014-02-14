@@ -77,7 +77,27 @@ public class RepositorioPosto extends Repositorio {
 
 	@Override
 	public void atualizar(Object objeto, String atributo, String novoValor) {
-		// TODO Auto-generated method stub
+		
+		//Caso não seja uma imagem
+		if(!atributo.equalsIgnoreCase("emblema")){
+			String codigo = ((Posto)objeto).codigo;
+			String update = "UPDATE tb_posto SET "+atributo+ " = " +novoValor + "WHERE codigo = " + codigo; 
+			Statement stmt;
+			try{
+				stmt = con.createStatement();
+				stmt.executeUpdate(update);
+				System.out.println(" Update realizado ");
+				stmt.close();
+			} catch(SQLException ex2){
+				ex2.printStackTrace();
+				try {
+					con.rollback();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
 		
 	}
 
