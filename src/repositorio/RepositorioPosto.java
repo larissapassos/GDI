@@ -22,8 +22,10 @@ public class RepositorioPosto extends Repositorio {
 	public void inserir(Object objeto) {
 		// TODO Auto-generated method stub
 		try{
+			System.out.println("opa2");
 			Posto posto = (Posto)objeto;
-			PreparedStatement inserirPosto = con.prepareStatement("INSERT INTO tb_posto('?', '?', (SELECT REF(e) FROM tb_endereco e WHERE e.cep = '?'), ?)");
+			
+			PreparedStatement inserirPosto = con.prepareStatement("INSERT INTO tb_posto VALUES(?,?, (SELECT REF(e) FROM tb_endereco e WHERE e.cep = ?), ?)");
 			
 			inserirPosto.setString(1, posto.codigo);
 			inserirPosto.setString(2, posto.nome);
@@ -34,7 +36,7 @@ public class RepositorioPosto extends Repositorio {
 			FileInputStream in = new FileInputStream(blob);
 			
 			inserirPosto.setBinaryStream(4, in,(int)blob.length());
-			inserirPosto.execute();
+			inserirPosto.executeUpdate();
 		
 		}catch (SQLException exex) { 
 			exex.printStackTrace();
