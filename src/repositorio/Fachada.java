@@ -43,8 +43,8 @@ public class Fachada {
 	}
 	
 	public ArrayList<Object> consulta(String codigo, String nome, String logradouro, String numero,String complemento, String bairro, String cidade, String estado, String cep) throws SQLException{
-		String consulta = "SELECT * FROM tb_posto p";
-		if (!codigo.isEmpty()||!nome.isEmpty()||!logradouro.isEmpty()||!numero.isEmpty()||!complemento.isEmpty()||!bairro.isEmpty()||!cidade.isEmpty()||!estado.isEmpty()||cep.isEmpty()){
+		String consulta = "SELECT p.codigo, p.nome, p.endereco.logradouro AS logradouro, p.endereco.numero AS numero, p.endereco.complemento AS complemento, p.endereco.bairro AS bairro, p.endereco.cidade AS cidade, p.endereco.estado AS estado, p.endereco.cep AS cep, p.emblema FROM tb_posto p";
+		if (!codigo.isEmpty()||!nome.isEmpty()||!logradouro.isEmpty()||!numero.isEmpty()||!complemento.isEmpty()||!bairro.isEmpty()||!cidade.isEmpty()||!estado.isEmpty()||!cep.isEmpty()){
 			consulta += " WHERE ";
 		}
 		boolean and = false;
@@ -103,7 +103,8 @@ public class Fachada {
 			}else consulta = consulta + "AND p.endereco.numero = \""+numero + "\" ";
 		}
 		System.out.println(consulta);
-		return rep.consultar(consulta);
+		ArrayList<Object> retorno = rep.consultar(consulta);
+		return retorno;
 	}
 	
 	public void inserir(Posto posto){

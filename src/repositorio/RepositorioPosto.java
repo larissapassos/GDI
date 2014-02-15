@@ -1,14 +1,19 @@
 package repositorio;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import objetos.Endereco;
 import objetos.Posto;
 
 public class RepositorioPosto extends Repositorio {
@@ -48,8 +53,37 @@ public class RepositorioPosto extends Repositorio {
 
 	@Override
 	public ArrayList<Object> consultar(String consulta) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Object> retorno = new ArrayList<Object>();
+		System.out.println("Chamou o metodo");
+		Statement stmt = con.createStatement();
+		System.out.println(consulta);
+		ResultSet rset = stmt.executeQuery(consulta);
+		System.out.println("Consulta realizada");
+		while(rset.next()){
+			System.out.println("entrou");
+			String codigo = rset.getString("codigo");
+			String nome = rset.getString("nome");
+			System.out.println("Posto " + nome);
+			String logradouro = rset.getString("logradouro");
+			String numero = rset.getString("numero");
+			String complemento = rset.getString("complemento");
+			String bairro = rset.getString("bairro");
+			String cidade = rset.getString("cidade");
+			String estado = rset.getString("estado");
+			String cep = rset.getString("cep");
+			Endereco endereco = new Endereco(logradouro, numero, complemento, bairro, cidade, estado, cep);
+			Blob emblemaBlob = rset.getBlob("emblema");
+			byte teste[ ] = emblemaBlob.getBytes(1,(int)emblemaBlob.length());
+			Image emblema = null;
+			if (teste != null) {
+				emblema = (Image)Toolkit.getDefaultToolkit().createImage(teste);
+				System.out.println("Imagem gerada com sucesso");
+			}
+			Posto posto = new Posto(codigo, nome, endereco, emblema);
+			retorno.add(posto);
+			System.out.println("Posto " + posto.nome + "adicionado com sucesso ao retorno");
+		}
+		return retorno;
 	}
 
 	@Override
